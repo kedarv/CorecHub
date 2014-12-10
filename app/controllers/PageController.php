@@ -27,8 +27,8 @@ class PageController extends BaseController {
 		$client->getClient()->setDefaultOption('verify', false);
 		$crawler = $client->request('GET', 'https://wpvappwt01.itap.purdue.edu/wbwsc/webtrac.wsc/wbsplash.html');
 		$form = $crawler->filterXPath('//*[@id="sp_login"]/form')->form(array(
-			'xxlogid' => '',
-			'xxlogpin' => '',
+			'xxlogid' => Config::get('keys.id'),
+			'xxlogpin' => Config::get('keys.email'),
 		));
 		$submit = $client->submit($form);
 		$getLoggedInHTML = $submit->filterXpath('//*[@id="content"]')->children()->html();
@@ -40,17 +40,24 @@ location.replace('", "');
 		$crawler = $client->click($link);
 		$crawler = $crawler->filterXPath('//table')->eq(2);
 		$table = "<table>" . $crawler->html() . "</table>";
-		var_dump($table);
+		//var_dump($table);
+
 		$dom = new DomDocument;
 		$dom->loadHTML($table);
 		$dom->preserveWhiteSpace = false;
 		$tables = $dom->getElementsByTagName('table');
-
 		$rows = $tables->item(0)->getElementsByTagName('tr');
-		$array = iterator_to_array($rows);
-		//foreach ($rows as $row) {
-			//echo $row->nodeValue . "~";
-		//}
+
+		$table = array();
+		foreach ($rows as $row) {   
+		    $cols = $row->getElementsByTagName('td');   
+		    $row = array();
+		    foreach ($cols as $node) {
+		   		$row[] = $node->nodeValue;
+		    }
+		    $table[] = $row;
+		}
+		var_dump($table);
 		$data['name'] = "Home";
 		return View::make('home', compact('data'));
 	}
