@@ -57,7 +57,19 @@ location.replace('", "');
 		    }
 		    $table[] = $row;
 		}
-		var_dump($table);
+
+		unset($table[0]);
+		$count = count($table);
+
+		foreach($table as $t) {
+			if ($count-- <= 2) {
+				break;
+			}
+			else {
+				echo $t[2] . " " . $t[3] . "<br/>";
+			}
+		}
+
 		$data['name'] = "Home";
 		return View::make('home', compact('data'));
 	}
