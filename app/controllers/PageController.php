@@ -67,7 +67,12 @@ location.replace('", "');
 				break;
 			}
 			else {
-				$dataTable[strtotime($t[2])] = 1;
+				if(isset($dataTable[strtotime($t[2])])) {
+					$dataTable[strtotime($t[2])]++;
+				}
+				else {
+					$dataTable[strtotime($t[2])] = 1;
+				}
 				echo strtotime($t[2]) . " " . strtotime($t[3]) . " (" . $t[3] . ")<br/>";
 			}
 		}

@@ -13,6 +13,6 @@
 		start: new Date(2014, 0),
 		cellSize: 15,
 		range: 12,
-		legend: [0, 1]
+		legend: [1]
 	});
 </script>
