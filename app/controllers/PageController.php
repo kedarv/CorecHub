@@ -22,7 +22,8 @@ class PageController extends BaseController {
 		$len = strpos($string,$end,$ini) - $ini;
 		return substr($string,$ini,$len);
 	}
-	public function showWelcome() {
+
+		public function showWelcome() {
 		$client = new Client();
 		$client->getClient()->setDefaultOption('verify', false);
 		$crawler = $client->request('GET', 'https://wpvappwt01.itap.purdue.edu/wbwsc/webtrac.wsc/wbsplash.html');
@@ -62,11 +63,11 @@ location.replace('", "');
 		$count = count($table);
 
 		foreach($table as $t) {
-			if ($count-- <= 2) {
+			if ($count-- <= 1) {
 				break;
 			}
 			else {
-				echo $t[2] . " " . $t[3] . "<br/>";
+				echo $t[2] . " " . strtotime($t[3]) . " (" . $t[3] . ")<br/>";
 			}
 		}
 
