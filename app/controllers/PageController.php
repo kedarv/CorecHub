@@ -39,7 +39,14 @@ location.replace('", "');
 		$crawler = $client->request('GET', $parsedLink);
 		$link = $crawler->selectLink('My History')->link();
 		$crawler = $client->click($link);
-		$crawler = $crawler->filterXPath('//table')->eq(2);
+
+		$form = $crawler->filterXPath('//*[@id="hhhistory"]')->form(array(
+			'xxpassbeg' => '11/01/2013',
+			'xxpassend' => '12/10/2014',
+		));
+		$submit = $client->submit($form);
+
+		$crawler = $submit->filterXPath('//table')->eq(2);
 		$table = "<table>" . $crawler->html() . "</table>";
 		//var_dump($table);
 
@@ -73,7 +80,7 @@ location.replace('", "');
 				else {
 					$dataTable[strtotime($t[2])] = 1;
 				}
-				echo strtotime($t[2]) . " " . strtotime($t[3]) . " (" . $t[3] . ")<br/>";
+				//echo strtotime($t[2]) . " " . strtotime($t[3]) . " (" . $t[3] . ")<br/>";
 			}
 		}
 		$dataJSON = json_encode($dataTable);
