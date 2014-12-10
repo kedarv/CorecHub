@@ -61,17 +61,18 @@ location.replace('", "');
 
 		unset($table[0]);
 		$count = count($table);
-
+		$dataTable = array();
 		foreach($table as $t) {
 			if ($count-- <= 1) {
 				break;
 			}
 			else {
-				echo $t[2] . " " . strtotime($t[3]) . " (" . $t[3] . ")<br/>";
+				$dataTable[strtotime($t[2])] = 1;
+				echo strtotime($t[2]) . " " . strtotime($t[3]) . " (" . $t[3] . ")<br/>";
 			}
 		}
-
+		$dataJSON = json_encode($dataTable);
 		$data['name'] = "Home";
-		return View::make('home', compact('data'));
+		return View::make('home', compact('data', 'dataJSON'));
 	}
 }
