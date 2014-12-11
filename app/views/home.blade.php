@@ -9,14 +9,14 @@
 		itemSelector: "#cal-heatmap",
 		domain: "month",
 		subDomain: "day",
-		data: {{$dataJSON}},
+		data: {{$dataJSON['heat']}},
 		start: new Date(2014, 0),
 		cellSize: 15,
 		range: 12,
 		legend: [1]
 	});
 </script>
-
+{{var_dump($dataJSON['punch'])}}
 <div id="punchcard"></div>
 
 {{ HTML::script('js/d3.punchcard.js'); }}
