@@ -16,3 +16,8 @@
 		legend: [1]
 	});
 </script>
+
+<div id="punchcard"></div>
+
+{{ HTML::script('js/d3.punchcard.js'); }}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
