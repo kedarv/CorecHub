@@ -1,7 +1,7 @@
 {{ HTML::style('css/cal-heatmap.css'); }}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 {{HTML::script('//d3js.org/d3.v3.min.js')}}
 {{ HTML::script('js/cal-heatmap.min.js'); }}
-
 <div id="cal-heatmap"></div>
 <script type="text/javascript">
 	var cal = new CalHeatMap();

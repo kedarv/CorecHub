@@ -138,6 +138,8 @@ location.replace('", "');
 
 				//var_dump($sunday);
 				$i = 1;
+				ksort($week);
+				var_dump($week);
 				foreach($week as $day) {
 					foreach($day as $occurance) {
 						echo date('G', $occurance) ." ~ ";
@@ -222,7 +224,7 @@ location.replace('", "');
 				$expiresAt = Carbon::now()->addMinutes(1440);
 				Cache::add('json', $dataJSON, $expiresAt);
 			}
-		
+		var_dump($dataJSON['monday']);
 		$data['name'] = "Home";
 		return View::make('home', compact('data', 'dataJSON'));
 	}
