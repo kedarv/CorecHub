@@ -81,7 +81,9 @@ location.replace('", "');
 						break;
 					}
 					else {
-						$dataPunch[strtotime($t[2])] = strtotime($t[3]);
+						$time = str_replace("A", "am",  $t[3]);
+						$time = str_replace("P", "pm",  $t[3]);
+						$dataPunch[strtotime($t[2])] = strtotime($time);
 						if(isset($dataHeat[strtotime($t[2])])) {
 							$dataHeat[strtotime($t[2])]++;
 						}
@@ -92,14 +94,136 @@ location.replace('", "');
 					}
 				}
 				
+				$week = array();
+				foreach($dataPunch as $k => $v) {
+					switch(date("N", $k)) {
+						case 1:
+							$week[1][] = $v;
+						break;
+
+						case 2:
+							$week[2][] = $v;
+						break;
+				
+						case 3:
+							$week[3][] = $v;		
+						break;
+
+						case 4:
+							$week[4][] = $v;	
+						break;
+
+						case 5:
+							$week[5][] = $v;
+						break;
+
+						case 6:
+							$week[6][] = $v;	
+						break;
+
+						case 7:
+							$week[7][] = $v;
+						break;
+					}
+					//echo date("N", $k) . " - " . 	$v . "<br/>";
+				}
+
+				$monday = array_fill(0, 24, 0);
+				$tuesday = array_fill(0, 24, 0);
+				$wednesday = array_fill(0, 24, 0);
+				$thursday = array_fill(0, 24, 0);
+				$friday = array_fill(0, 24, 0);
+				$saturday = array_fill(0, 24, 0);
+				$sunday = array_fill(0, 24, 0);
+
+				//var_dump($sunday);
+				$i = 1;
+				foreach($week as $day) {
+					foreach($day as $occurance) {
+						echo date('G', $occurance) ." ~ ";
+						switch($i) {
+						case 1:
+							if(isset($monday[date('G', $occurance)])) {
+								$monday[date('G', $occurance)]++;
+							}
+							else {
+								$monday[date('G', $occurance)] = 1;
+							}
+						break;
+
+						case 2:
+							if(isset($tuesday[date('G', $occurance)])) {
+								$tuesday[date('G', $occurance)]++;
+							}
+							else {
+								$tuesday[date('G', $occurance)] = 1;
+							}
+						break;
+				
+						case 3:
+							if(isset($wednesday[date('G', $occurance)])) {
+								$wednesday[date('G', $occurance)]++;
+							}
+							else {
+								$wednesday[date('G', $occurance)] = 1;
+							}
+						break;
+
+						case 4:
+							if(isset($thursday[date('G', $occurance)])) {
+								$thursday[date('G', $occurance)]++;
+							}
+							else {
+								$thursday[date('G', $occurance)] = 1;
+							}
+						break;
+
+						case 5:
+							if(isset($friday[date('G', $occurance)])) {
+								$friday[date('G', $occurance)]++;
+							}
+							else {
+								$friday[date('G', $occurance)] = 1;
+							}
+						break;
+
+						case 6:
+							if(isset($saturday[date('G', $occurance)])) {
+								$saturday[date('G', $occurance)]++;
+							}
+							else {
+								$saturday[date('G', $occurance)] = 1;
+							}
+						break;
+
+						case 7:
+							if(isset($sunday[date('G', $occurance)])) {
+								$sunday[date('G', $occurance)]++;
+							}
+							else {
+								$sunday[date('G', $occurance)] = 1;
+							}
+						break;
+						}
+					}
+					$i++;
+				}
 
 				$dataJSON['heat'] = json_encode($dataHeat);
 				$dataJSON['punch'] = json_encode($dataPunch);
+				$dataJSON['monday'] = json_encode($monday);
+				$dataJSON['tuesday'] = json_encode($tuesday);
+				$dataJSON['wednesday'] = json_encode($wednesday);
+				$dataJSON['thursday'] = json_encode($thursday);
+				$dataJSON['friday'] = json_encode($friday);
+				$dataJSON['saturday'] = json_encode($saturday);
+				$dataJSON['sunday'] = json_encode($sunday);
 
 				$expiresAt = Carbon::now()->addMinutes(1440);
 				Cache::add('json', $dataJSON, $expiresAt);
 			}
-			$data['name'] = "Home";
-			return View::make('home', compact('data', 'dataJSON'));
+		
+		$data['name'] = "Home";
+		return View::make('home', compact('data', 'dataJSON'));
 	}
 }
