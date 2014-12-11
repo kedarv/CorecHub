@@ -97,29 +97,36 @@ class PageController extends BaseController {
 		foreach($rawArray as $k => $v) {
 			switch(date("N", $k)) {
 				case 1:
-					$week[1] = 1;
+					$week[1][] = 1;
 				break;
 
 				case 2:
+					$week[2][] = 1;
 				break;
 
 				case 3:
+					$week[3][] = 1;			
 				break;
 
 				case 4:
+					$week[4][] = 1;	
 				break;
 
 				case 5:
+					$week[5][] = 1;	
 				break;
 
 				case 6:
+					$week[6][] = 1;	
 				break;
 
 				case 7:
+					$week[7][] = 1;	
 				break;
 			}
-			echo date("N", $k) . " - " . 	$v . "<br/>";
+			//echo date("N", $k) . " - " . 	$v . "<br/>";
 		}
+		var_dump($week);
 		$data['name'] = "Home";
 		return View::make('home', compact('data', 'dataJSON'));
 	}
