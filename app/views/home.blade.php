@@ -1,12 +1,8 @@
 {{ HTML::style('css/cal-heatmap.css'); }}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-{{HTML::script('//d3js.org/d3.v3.min.js')}}
-{{ HTML::script('js/cal-heatmap.min.js'); }}
 <div class="container">
 	<hr/>
-	<div class="text-center">
-		<div id="cal-heatmap"></div>
-	</div>
+	<div id="cal-heatmap"></div>
 	<hr/>
 	<div class="text-center">
 		<div id="punchcard"></div>
@@ -14,13 +10,22 @@
 	<hr/>
 </div>
 
+{{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')}}
+{{HTML::script('//d3js.org/d3.v3.min.js')}}
+{{ HTML::script('js/cal-heatmap.min.js'); }}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+});
+</script>
 <script type="text/javascript">
 	var cal = new CalHeatMap();
 	cal.init({
 		itemSelector: "#cal-heatmap",
 		domain: "month",
 		subDomain: "day",
-		domainDynamicDimension: false,
+		domainDynamicDimension: true,
 		domainGutter: 0,
 		data: {{$dataJSON['heat']}},
 		start: new Date(2014, 0),
@@ -180,4 +185,3 @@ for (i = 0; i < data.length; i++) {
   }
 }
 </script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
