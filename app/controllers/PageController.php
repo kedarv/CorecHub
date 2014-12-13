@@ -23,7 +23,11 @@ class PageController extends BaseController {
 		return substr($string,$ini,$len);
 	}
 
-	public function showWelcome() {
+	public function home() {
+		$data['name'] = "Home";
+		return View::make('home', compact('data'));
+	}
+	public function showStats() {
 		if (Cache::has('json')) {
 			$dataJSON = Cache::get('json');
 		}
@@ -244,7 +248,7 @@ location.replace('", "');
 			$expiresAt = Carbon::now()->addMinutes(1440);
 			Cache::add('json', $dataJSON, $expiresAt);
 		}
-		$data['name'] = "Home";
-		return View::make('home', compact('data', 'dataJSON'));
+		$data['name'] = "Stats";
+		return View::make('stats', compact('data', 'dataJSON'));
 	}
 }

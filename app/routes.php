@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'PageController@showWelcome');//
+Route::get('/', 'PageController@home');
+Route::get('stats', 'PageController@showStats');//
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');
