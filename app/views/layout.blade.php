@@ -6,36 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{$data['name']}}</title>
 	{{ HTML::style('css/bootstrap.css'); }}
-	<style>
-.header-image {
-    display: block;
-    width: 100%;
-    background: url('img/bg.jpg') no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
+    {{ HTML::style('css/style.css'); }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'); }}
+    <link href='http://fonts.googleapis.com/css?family=Oswald:700,400' rel='stylesheet' type='text/css'>
 
-.headline {
-    padding: 60px 0;
-    color: #fff;
-}
-
-.headline h1 {
-    font-size: 70px;
-}
-
-.headline h2 {
-    font-size: 77px;
-}
-.navbar {
-	margin-bottom: 0px;
-}
-</style>
 </head>
 <body>
  @include('nav')
  @yield('content')
  </body>
+    {{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')}}
  </html>
