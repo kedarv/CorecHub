@@ -50,12 +50,16 @@
 }
 .box-icon {
   background: rgba(0,0,0,.7);
+  transition: background-color .5s ease;
   border-radius: 50%;
   display: table;
   height: 100px;
   margin: 0 auto;
   width: 100px;
   margin-top: -61px;
+}
+.box-icon:hover {
+  background: rgba(0,0,0,.8);
 }
 .box-icon span {
   color: #fff;
