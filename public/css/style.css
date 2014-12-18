@@ -1,3 +1,7 @@
+body {
+  /*padding-top: 40px;*/
+  background: #060606;
+}
 .header-image {
     display: block;
     width: 100%;
@@ -47,9 +51,10 @@
   padding: 10px 25px;
   display: block;
   margin-top: 60px;
+  background: rgba(255,255,255,.1);
 }
 .box-icon {
-  background: rgba(0,0,0,.7);
+  background: #E3AE24;
   transition: background-color .5s ease;
   border-radius: 50%;
   display: table;
@@ -59,7 +64,7 @@
   margin-top: -61px;
 }
 .box-icon:hover {
-  background: rgba(0,0,0,.8);
+  background: #A3792C;
 }
 .box-icon span {
   color: #fff;
@@ -71,11 +76,37 @@
   font-size: 26px;
   text-transform: uppercase;
   font-weight: 700;
+  color: #EEEEEE;
 }
 .info > p {
   font-weight: 400;
-  color: #717171;
+  color: #D2D2D2;
   font-size: 16px;
   padding-top: 10px;
   text-align: left;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #282828;
+}
+.btn-oldgold {
+  color: #ffffff;
+  background-color: #A3792C;
+  border-color: #816023;
+}
+.btn-oldgold:hover, .btn-oldgold:focus {
+  color: #EEE;
+}
+.btn-newgold {
+  color: #ffffff;
+  background-color: #E3AE24;
+  border-color: #C09318;
+}
+.btn-newgold:hover, .btn-newgold:focus {
+  color: #EEE;
+}
+.form-control:focus {
+  border-color: #E3AE24;
 }

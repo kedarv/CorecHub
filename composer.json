@@ -9,8 +9,7 @@
 		"behat/mink": "1.6.*",
 		"behat/mink-goutte-driver": "*",
 		"fabpot/goutte": "~2.0",
-		"guzzlehttp/guzzle": "*",
-		"zizaco/confide": "~4.0@dev"
+		"guzzlehttp/guzzle": "*"
 	},
 	"autoload": {
 		"classmap": [

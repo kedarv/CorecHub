@@ -21,7 +21,7 @@
                 	<div class="form-group">
                 		<input class="form-control input-lg" type="text" placeholder="Password">
                 	</div>
-                	<button type="button" class="btn btn-primary btn-lg btn-block">Sign Up for CorecHub</button>
+                	<button type="button" class="btn btn-oldgold btn-lg btn-block">Sign Up for CorecHub</button>
                 </div>
             </div>
          </div>
