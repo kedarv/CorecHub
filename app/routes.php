@@ -10,13 +10,13 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
 Route::get('/', 'PageController@home');
 Route::get('stats', 'PageController@showStats');//
 
 // Confide routes
-Route::get('users/create', 'UsersController@create');
-Route::post('users', 'UsersController@store');
+Route::post('users/create', 'UsersController@create');
 Route::get('users/login', 'UsersController@login');
 Route::post('users/login', 'UsersController@doLogin');
 Route::get('users/confirm/{code}', 'UsersController@confirm');

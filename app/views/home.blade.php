@@ -1,4 +1,41 @@
 @extends('layout')
+
+@section('append_js')
+<script>
+$('#signup').submit(function(e){
+    e.preventDefault();
+    var $form = $( this ),
+        dataFrom = $form.serialize(),
+        url = $form.attr( "action"),
+        method = $form.attr( "method" );
+
+    $.ajax({
+        url: "{{action('UsersController@create')}}",
+        data: dataFrom,
+        type: method,
+		success: function (response) {
+			var errors = "";
+			if (response == 'success') {
+
+			}
+			else {
+				$.each( response['text'], function( index, value ){
+					errors += (value  + "\n");
+				})
+				swal({
+					title: "Error",
+					text: errors,
+					type: "error",
+					confirmButtonColor: "#DD6B55",
+				});
+			}
+			console.log(response['text']);
+		}
+    });
+});
+</script>
+@stop
+
 @section('content')
 <header class="header-image">
 	<div class="headline">
@@ -9,19 +46,20 @@
               	 		<h1>Fitness at Purdue. Simplified.</h1>
               	 		<p>Track your fitness activity, share your progress, and become healthier <b>together.</b></p>
                 	</div>
-
                 </div>
                 <div class="col-md-4">
-                	<div class="form-group">
-                		<input class="form-control input-lg" type="text" placeholder="PUID">
-                	</div>
-                	<div class="form-group">
-                		<input class="form-control input-lg" type="text" placeholder="user@purdue.edu">
-                	</div>
-                	<div class="form-group">
-                		<input class="form-control input-lg" type="text" placeholder="Password">
-                	</div>
-                	<button type="button" class="btn btn-oldgold btn-lg btn-block">Sign Up for CorecHub</button>
+                	{{Form::open(array('action' => 'UsersController@create', 'id' => 'signup'))}}
+	                	<div class="form-group">
+	                		{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg"))}}
+	                	</div>
+	                	<div class="form-group">
+	                		{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg"))}}
+	                	</div>
+	                	<div class="form-group">
+	                		{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg"))}}
+	                	</div>
+	                	{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-oldgold btn-lg btn-block"))}}
+                	{{Form::close()}}
                 </div>
             </div>
          </div>
