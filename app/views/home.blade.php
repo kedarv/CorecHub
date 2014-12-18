@@ -16,7 +16,12 @@ $('#signup').submit(function(e){
 		success: function (response) {
 			var errors = "";
 			if (response == 'success') {
-
+				swal({
+					title: "Success",
+					text: "Signing In...",
+					type: "success",
+					confirmButtonColor: "#DD6B55",
+				});
 			}
 			else {
 				$.each( response['text'], function( index, value ){
