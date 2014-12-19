@@ -56,7 +56,7 @@ location.replace('", "');
 			// Find the history form, input values
 			$form = $crawler->filterXPath('//*[@id="hhhistory"]')->form(array(
 				'xxpassbeg' => '11/01/2013',
-				'xxpassend' => '12/10/2014',
+				'xxpassend' => '12/18/2014',
 			));
 			$submit = $client->submit($form);
 

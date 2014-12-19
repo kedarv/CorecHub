@@ -13,15 +13,18 @@ $('#signup').submit(function(e){
         url: "{{action('UsersController@create')}}",
         data: dataFrom,
         type: method,
+        beforeSend: function(request) {
+        return request.setRequestHeader('X-CSRF-Token', $("meta[name='token']").attr('content'));
+    	},
 		success: function (response) {
 			var errors = "";
-			if (response == 'success') {
+			if (response['status'] == 'success') {
 				swal({
 					title: "Success",
 					text: "Signing In...",
 					type: "success",
-					confirmButtonColor: "#DD6B55",
 				});
+				setTimeout("location.href = '{{action('PageController@showStats')}}'", 2000);
 			}
 			else {
 				$.each( response['text'], function( index, value ){
@@ -63,7 +66,10 @@ $('#signup').submit(function(e){
 	                	<div class="form-group">
 	                		{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg"))}}
 	                	</div>
-	                	{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-oldgold btn-lg btn-block"))}}
+	                	<div class="form-group">
+	            			{{--Form::captcha()--}}
+	                	</div>
+	                	{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-newgold btn-lg btn-block"))}}
                 	{{Form::close()}}
                 </div>
             </div>
