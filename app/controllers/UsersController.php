@@ -14,14 +14,14 @@ class UsersController extends Controller {
                     'email' => Input::get('email'),
                     'password' => Input::get('password'),
                     // 'g-recaptcha-response' => Input::get('captcha'),
-                ),
+                    ),
                 array(
                     'puid' => 'required|numeric|unique:users',
                     'email' => 'required|email|unique:users',
                     'password' => 'required|min:5'
                     // 'g-recaptcha-response' => 'required|recaptcha',
-                )
-            );
+                    )
+                );
             if ($validator->fails()) {
                 $json = json_encode(array('status' => 'danger', 'text' => $validator->messages()));
             }
