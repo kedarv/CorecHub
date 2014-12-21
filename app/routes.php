@@ -18,6 +18,7 @@ Route::get('stats', 'PageController@showStats');
 // User Routes
 Route::post('users/create', 'UsersController@create');
 Route::post('users/login', 'UsersController@doLogin');
+Route::post('users/manage', 'UsersController@doManage');
 Route::get('users/manage', 'UsersController@manage');
 
 Route::get('users/forgot_password', 'UsersController@forgotPassword');

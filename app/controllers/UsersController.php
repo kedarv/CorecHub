@@ -79,4 +79,7 @@ class UsersController extends Controller {
     	$data['name'] = "Manage Account";
     	return View::make('user/manage', compact('data'));
     }
+    public function doManage() {
+    	
+    }
 }
