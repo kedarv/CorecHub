@@ -13,13 +13,13 @@
 Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
 Route::get('/', 'PageController@home');
-Route::get('stats', 'PageController@showStats');//
+Route::get('stats', 'PageController@showStats');
 
-// Confide routes
+// User Routes
 Route::post('users/create', 'UsersController@create');
-Route::get('users/login', 'UsersController@login');
 Route::post('users/login', 'UsersController@doLogin');
-Route::get('users/confirm/{code}', 'UsersController@confirm');
+Route::get('users/manage', 'UsersController@manage');
+
 Route::get('users/forgot_password', 'UsersController@forgotPassword');
 Route::post('users/forgot_password', 'UsersController@doForgotPassword');
 Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
