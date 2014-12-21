@@ -253,3 +253,6 @@ hr {
   color: #fff;
   opacity: 1;
 }
+.no-display {
+  display:none;
+}

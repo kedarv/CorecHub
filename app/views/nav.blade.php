@@ -19,7 +19,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if(Auth::check()))
-          <li><a href="{{action('UsersController@logout')}}">Log Out</a></li>
+        <li><a href="{{action('UsersController@logout')}}">Log Out</a></li>
         @else
         <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -29,25 +29,26 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="myModalLabel">Login</h4>
               </div>
-              <div class="modal-body">
-              <div id="error" class="alert hide"></div>
               {{Form::open(array('action' => 'UsersController@doLogin', 'id' => 'login'))}}
+              <div class="modal-body">
+                <div id="error" class="alert no-display"></div>
                 <div class="form-group">
-                  {{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg"))}}
+                  {{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg", "id" => "email"))}}
                 </div>
                 <div class="form-group">
-                  {{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg"))}}
+                  {{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg", "id" => "password"))}}
                 </div>
                 <div class="form-group">
                   {{--Form::captcha()--}}
                 </div>
-                {{Form::submit('Sign in', array("class" => "btn btn-newgold btn-lg btn-block"))}}
-              {{Form::close()}}
+               
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Login</button>
+                 {{Form::submit('Sign in', array("class" => "btn btn-newgold"))}}
               </div>
+              {{Form::close()}}
             </div>
           </div>
         </div>
