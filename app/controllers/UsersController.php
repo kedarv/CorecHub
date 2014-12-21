@@ -23,7 +23,7 @@ class UsersController extends Controller {
                     )
                 );
             if ($validator->fails()) {
-                $json = json_encode(array('status' => 'danger', 'text' => $validator->messages()));
+                $response = array('status' => 'danger', 'text' => $validator->messages());
             }
             else {
                 $user = new User;
@@ -34,12 +34,45 @@ class UsersController extends Controller {
 
                 $user = User::find($user->id);
                 Auth::login($user);
-                $json = json_encode(array('status' => 'success', 'text' => 'Success'));
+                $response = array('status' => 'success', 'text' => 'Success');
             }
-            header('Content-Type: application/json');
-            echo $json;
+            return Response::json($response); 
             exit();
         }
+    }
+
+    public function doLogin() {
+        if (Request::ajax()) {
+            $validator = Validator::make(
+                array(
+                    'email' => Input::get('email'),
+                    'password' => Input::get('password'),
+                    ),
+                array(
+                    'email' => 'required|email',
+                    'password' => 'required|min:5'
+                    )
+                );
+            if ($validator->fails()) {
+                $response = (array('status' => 'danger', 'text' => $validator->messages()));
+            }
+            else {
+                if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')))) {
+                    $response = array('status' => 'success', 'text' => 'Success');
+                    //var_dump( Auth::user() );
+                }
+                else {
+                    $response = array('status' => 'danger', 'text' => array('1' => 'Invalid information'));
+                }
+            }
+            return Response::json($response); 
+            exit();
+        }       
+    }
+
+    public function logout() {
+        Auth::logout();
+        return Redirect::action('PageController@home');
     }
 
 }

@@ -56,21 +56,23 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					{{Form::open(array('action' => 'UsersController@create', 'id' => 'signup'))}}
-					<div class="form-group">
-						{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg"))}}
-					</div>
-					<div class="form-group">
-						{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg"))}}
-					</div>
-					<div class="form-group">
-						{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg"))}}
-					</div>
-					<div class="form-group">
-						{{--Form::captcha()--}}
-					</div>
-					{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-newgold btn-lg btn-block"))}}
-					{{Form::close()}}
+					@if(!Auth::check())
+						{{Form::open(array('action' => 'UsersController@create', 'id' => 'signup'))}}
+						<div class="form-group">
+							{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg"))}}
+						</div>
+						<div class="form-group">
+							{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg"))}}
+						</div>
+						<div class="form-group">
+							{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg"))}}
+						</div>
+						<div class="form-group">
+							{{--Form::captcha()--}}
+						</div>
+						{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-newgold btn-lg btn-block"))}}
+						{{Form::close()}}
+					@endif
 				</div>
 			</div>
 		</div>

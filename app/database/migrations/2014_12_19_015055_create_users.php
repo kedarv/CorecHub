@@ -17,6 +17,7 @@ class CreateUsers extends Migration
             $table->text('puid');
             $table->timestamps();
             $table->softDeletes();
+            $table->rememberToken();
         });
     }
 

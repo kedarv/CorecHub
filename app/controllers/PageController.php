@@ -39,8 +39,8 @@ class PageController extends BaseController {
 			$crawler = $client->request('GET', 'https://wpvappwt01.itap.purdue.edu/wbwsc/webtrac.wsc/wbsplash.html');
 			// Select form, input values
 			$form = $crawler->filterXPath('//*[@id="sp_login"]/form')->form(array(
-				'xxlogid' => Config::get('keys.id'),
-				'xxlogpin' => Config::get('keys.email'),
+				'xxlogid' => Crypt::decrypt(Auth::user()->puid),
+				'xxlogpin' => Auth::user()->email,
 			));
 			// Submit form, find redirect, and then visit the redirect link
 			$submit = $client->submit($form);
@@ -56,7 +56,7 @@ location.replace('", "');
 			// Find the history form, input values
 			$form = $crawler->filterXPath('//*[@id="hhhistory"]')->form(array(
 				'xxpassbeg' => '11/01/2013',
-				'xxpassend' => '12/18/2014',
+				'xxpassend' => '12/21/2014',
 			));
 			$submit = $client->submit($form);
 
