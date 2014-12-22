@@ -33,7 +33,7 @@
 			jQuery("#email").parent('div').removeClass('has-error has-success').addClass("has-success");
 			jQuery("#password").parent('div').removeClass('has-error has-success').addClass("has-success");
 			$.ajax({
-				url: "{{action('UsersController@login')}}",
+				url: "{{action('UsersController@doLogin')}}",
 				data: dataFrom,
 				type: method,
 				beforeSend: function(request) {

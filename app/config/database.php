@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'corechub',
 			'username'  => 'root',
-			'password'  => 'rEgutHathu3R62pu',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

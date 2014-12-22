@@ -80,6 +80,29 @@ class UsersController extends Controller {
     	return View::make('user/manage', compact('data'));
     }
     public function doManage() {
-    	
+        if (Request::ajax()) {
+            $validator = Validator::make(
+                array(
+                    'puid' => Input::get('puid'),
+                    'email' => Input::get('email'),
+                    ),
+                array(
+                    'puid' => 'required|numeric',
+                    'email' => 'required|email|unique:users,email,'.Auth::user()->id,
+                    )
+                );
+            if ($validator->fails()) {
+                $response = array('status' => 'danger', 'text' => $validator->messages());
+            }
+            else {
+                $user = User::find(Auth::user()->id);
+                $user->puid = Crypt::encrypt(Input::get('puid'));
+                $user->email = Input::get('email');
+                $user->save();
+                $response = array('status' => 'success', 'text' => 'Success');
+            }
+            return Response::json($response); 
+            exit();
+        }
     }
 }
