@@ -14,11 +14,13 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Link</a></li>
+				<li><a href="{{action('PageController@home')}}">Home</a></li>
+				@if(Auth::check())
+				<li><a href="{{action('PageController@showStats')}}">Stats</a></li>
+				@endif
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				@if(Auth::check()))
+				@if(Auth::check())
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{strstr(Auth::user()->email,'@', true)}} <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">

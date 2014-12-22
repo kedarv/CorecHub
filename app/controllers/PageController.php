@@ -28,10 +28,12 @@ class PageController extends BaseController {
 		return View::make('home', compact('data'));
 	}
 	public function showStats() {
+		$error = false;
 		if (Cache::has('json')) {
 			$dataJSON = Cache::get('json');
 		}
 		else {
+			try {
 			// Initalize Client, set options
 			$client = new Client();
 			$client->getClient()->setDefaultOption('verify', false);
@@ -247,8 +249,16 @@ location.replace('", "');
 			// Cache $dataJSON for 24 hours
 			$expiresAt = Carbon::now()->addMinutes(1440);
 			Cache::add('json', $dataJSON, $expiresAt);
+			} catch (InvalidArgumentException $e) {
+				$error = true;
+			}
 		}
-		$data['name'] = "Stats";
-		return View::make('stats', compact('data', 'dataJSON'));
+		if($error) {
+			return Redirect::action('UsersController@manage')->with('message', 'Could not authenticate with Purdue. Please make sure your PUID and email are correct.');
+		}
+		else {
+			$data['name'] = "Stats";
+			return View::make('stats', compact('data', 'dataJSON'));
+		}
 	}
 }

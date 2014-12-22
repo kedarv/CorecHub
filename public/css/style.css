@@ -193,6 +193,7 @@ hr {
 .modal-body {
   position: relative;
   padding: 20px;
+  color: #F3F3F3;
 }
 .modal-footer {
   padding: 20px;

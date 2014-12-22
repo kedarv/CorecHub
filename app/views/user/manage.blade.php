@@ -2,6 +2,11 @@
 
 @section('append_js')
 <script>
+  @if(Session::has('message'))
+  $(window).load(function(){
+    $('#myModal').modal('show');
+  });
+  @endif
   $('#manage').submit(function(e){
     e.preventDefault();
     var $form = $( this ),
@@ -36,6 +41,24 @@
 @stop
 
 @section('content')
+@if(Session::has('message'))
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Authentication Error</h4>
+      </div>
+      <div class="modal-body">
+        We could not authenticate your information with Purdue. Please make sure that your PUID and <b>@purdue</b> email address are correct.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-newgold" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
