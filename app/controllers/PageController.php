@@ -44,21 +44,29 @@ class PageController extends BaseController {
 				'xxlogid' => Crypt::decrypt(Auth::user()->puid),
 				'xxlogpin' => Auth::user()->email,
 			));
+
 			// Submit form, find redirect, and then visit the redirect link
 			$submit = $client->submit($form);
 			$getLoggedInHTML = $submit->filterXpath('//*[@id="content"]')->children()->html();
-				$parsedLink = $this->get_string_between($getLoggedInHTML, "<!--
-location.replace('", "');
-//-->");
+			
+			// This implementation is too fragile because tabbing breaks it.
+			//$parsedLink = $this->get_string_between($getLoggedInHTML, "<!--location.replace('", "');//-->");
+
+			// This implementation is more robust
+			preg_match('~\'(.*?)\'~', $getLoggedInHTML, $match);
+			
 			// Look for the history link, then click on the link
-			$crawler = $client->request('GET', $parsedLink);
+			$crawler = $client->request('GET', $match[1]);
 			$link = $crawler->selectLink('My History')->link();
 			$crawler = $client->click($link);
 
+			// Generate Time
+			$timeEnd = date("m/d/Y", time()); // Today's Date
+			$timeStart = date("m/d/Y", strtotime($timeEnd . '-1 year')); // One year ago from today
 			// Find the history form, input values
 			$form = $crawler->filterXPath('//*[@id="hhhistory"]')->form(array(
-				'xxpassbeg' => '11/01/2013',
-				'xxpassend' => '12/21/2014',
+				'xxpassbeg' => $timeStart,
+				'xxpassend' => $timeEnd,
 			));
 			$submit = $client->submit($form);
 
