@@ -1,5 +1,5 @@
-{{ HTML::style('css/stats.css'); }}
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+@extends('layout')
+@section('content')
 <div class="container">
   <br/>
   <div class="alert alert-info"><b>Hey!</b> This is a <i>very</i> early preview of CorecHub. As you can see, the base framework has been completed, but not much else. Enjoy the data visualization :)</div>
@@ -11,11 +11,6 @@
   </div>
   <hr/>
 </div>
-
-{{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')}}
-{{HTML::script('//d3js.org/d3.v3.min.js')}}
-{{ HTML::script('js/cal-heatmap.min.js'); }}
-{{HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 <script type="text/javascript">
 	var cal = new CalHeatMap();
 	cal.init({
@@ -192,3 +187,4 @@ function showData(data) {
   }
   showData(data)
 </script>
+@stop

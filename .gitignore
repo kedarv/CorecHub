@@ -9,3 +9,4 @@ Thumbs.db
 /app/config/keys.php
 /app/config/packages/greggilbert/recaptcha/config.php
 /app/config/database.php
+/node_modules

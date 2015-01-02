@@ -1,0 +1,33 @@
+{
+  "name": "corechub",
+  "version": "1.0.0",
+  "description": "corechub for purdue",
+  "main": "index.php",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kedarv/CorecHub.git"
+  },
+  "keywords": [
+    "corechub"
+  ],
+  "author": "kedarv",
+  "license": "NA",
+  "bugs": {
+    "url": "https://github.com/kedarv/CorecHub/issues"
+  },
+  "homepage": "https://github.com/kedarv/CorecHub",
+  "devDependencies": {
+    "del": "^1.1.1",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.2"
+  }
+}
