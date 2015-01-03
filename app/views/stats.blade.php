@@ -29,7 +29,7 @@
 		cellSize: 12,
 		range: 12,
 		legend: [1],
-		legendColors: ["#D1D3D4", "#E3AE24"],
+		legendColors: ["#2E2E2E", "#E3AE24"],
 		onClick: function(date, nb) {
 			$("#onClick-placeholder").html("You just clicked <br/>on <b>" +
 				date + "</b> <br/>with <b>" +
@@ -104,6 +104,7 @@ for (i in y.ticks(7)) {
 	attr("x", margin).
 	attr("y", height - 3 * margin - y(i) - 5).
 	attr("text-anchor", "left").
+	style("fill", "#fff").
 	text(["Sunday", "Saturday", "Friday", "Thursday", "Wednesday", "Tuesday", "Monday"][i]);
 
 	punchcard.
@@ -135,6 +136,7 @@ attr("x", function(d) {
 	return pane_left - 2 * margin + x(d);
 }).
 attr("y", height - 3 * margin).
+style("fill", "#fff").
 attr("text-anchor", "middle").
 text(function(d) {
 	if (d === 0) {

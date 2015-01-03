@@ -379,8 +379,6 @@ hr {
   color: #e6e6e6;
 }
 .well-light {
-  background: #fff;
-}
-.rule {
-  color: #fff;
+  /*background: #000;*/
+  border:none;
 }
