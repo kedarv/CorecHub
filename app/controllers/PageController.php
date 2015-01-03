@@ -29,8 +29,8 @@ class PageController extends BaseController {
 	}
 	public function showStats() {
 		$error = false;
-		if (Cache::has('json')) {
-			$dataJSON = Cache::get('json');
+		if (Cache::has(sha1(Auth::user()->email))) {
+			$dataJSON = Cache::get(sha1(Auth::user()->email));
 		}
 		else {
 			try {
@@ -257,7 +257,7 @@ class PageController extends BaseController {
 
 			// Cache $dataJSON for 24 hours
 			$expiresAt = Carbon::now()->addMinutes(1440);
-			Cache::add('json', $dataJSON, $expiresAt);
+			Cache::add(sha1(Auth::user()->email), $dataJSON, $expiresAt);
 			} catch (InvalidArgumentException $e) {
 				$error = true;
 			}
