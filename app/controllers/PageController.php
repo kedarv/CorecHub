@@ -39,6 +39,7 @@ class PageController extends BaseController {
 			$client->getClient()->setDefaultOption('verify', false);
 			// Request login page
 			$crawler = $client->request('GET', 'https://wpvappwt01.itap.purdue.edu/wbwsc/webtrac.wsc/wbsplash.html');
+
 			// Select form, input values
 			$form = $crawler->filterXPath('//*[@id="sp_login"]/form')->form(array(
 				'xxlogid' => Crypt::decrypt(Auth::user()->puid),
@@ -48,7 +49,7 @@ class PageController extends BaseController {
 			// Submit form, find redirect, and then visit the redirect link
 			$submit = $client->submit($form);
 			$getLoggedInHTML = $submit->filterXpath('//*[@id="content"]')->children()->html();
-			
+
 			// This implementation is too fragile because tabbing breaks it.
 			//$parsedLink = $this->get_string_between($getLoggedInHTML, "<!--location.replace('", "');//-->");
 

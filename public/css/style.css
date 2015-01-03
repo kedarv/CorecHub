@@ -378,3 +378,9 @@ hr {
 .alert-success .alert-link {
   color: #e6e6e6;
 }
+.well-light {
+  background: #fff;
+}
+.rule {
+  color: #fff;
+}
