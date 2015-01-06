@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+
 <div class="container container-light">
 	<br/>
 	<div class="alert alert-info"><b>Hey!</b> This is a <i>very</i> early preview of CorecHub. As you can see, the base framework has been completed, but not much else. Enjoy the data visualization :)</div>
