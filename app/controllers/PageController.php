@@ -95,29 +95,19 @@ class PageController extends BaseController {
 		}
 
 	function processData($eloquentTable) {
-		foreach($eloquentTable as $n) {
-			foreach($n as $m) {
-				$table[] = $m;
-			}
-		}
-
-		// Count items in the table
-		$count = count($table);
-
-		$dataHeat = array();
-		$dataPunch = array();
 
 		// Go through each td block
-		foreach($table as $t) {
+		foreach($eloquentTable as $t) {
+
 			// Store in punchcard array.
-			$dataPunch[strtotime($t[2])] = strtotime($time);
+			$dataPunch[$t['day']] = $t['time'];
 
 			// Store heatmap values
-			if(isset($dataHeat[$t])) { // Check if the value exists, if it has increment
-				$dataHeat[$t]++;
+			if(isset($dataHeat[$t['day']])) { // Check if the value exists, if it has increment
+				$dataHeat[$t['day']]++;
 			}
 			else { // If the value does not increment, set it to 1
-				$dataHeat[$t] = 1;
+				$dataHeat[$t['day']] = 1;
 			}
 		}
 			
@@ -251,7 +241,6 @@ class PageController extends BaseController {
 			$dataJSON['friday'] = json_encode($friday);
 			$dataJSON['saturday'] = json_encode($saturday);
 			$dataJSON['sunday'] = json_encode($sunday);
-			var_dump($dataJSON);
 		return $dataJSON;
 	}
 
@@ -264,11 +253,13 @@ class PageController extends BaseController {
 				break;
 			}
 			else {
+				// t[2] is the day and t[3] is the time of checkin
 				// Replace 'A' with 'am' and 'P' with 'pm' so that strtotime can recognize the format
 				$time = str_replace("A", "am",  $t[3]);
 				$time = str_replace("P", "pm",  $t[3]);
 
 				$checkin = new Checkin;
+				$checkin->day = strtotime($t[2]);
 				$checkin->time = strtotime($time);
 				$checkin->userid = Auth::user()->id;
 				$checkin->save();
@@ -286,7 +277,7 @@ class PageController extends BaseController {
 			$user->save();
 		}
 		
-		$checkin = Checkin::where('userid', '=', Auth::user()->id)->get(array("time"))->toArray();
+		$checkin = Checkin::where('userid', '=', Auth::user()->id)->get(array("day", "time"))->toArray();
 		return $this->processData($checkin);
 	}
 	public function home() {

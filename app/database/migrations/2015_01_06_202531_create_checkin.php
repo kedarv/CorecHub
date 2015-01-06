@@ -14,6 +14,7 @@ class CreateCheckin extends Migration
         Schema::create('checkin', function ($table) {
             $table->increments('id');
             $table->integer('userid');
+            $table->integer('day');
             $table->integer('time');
             $table->text('log');
             $table->timestamps();
