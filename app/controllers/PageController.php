@@ -268,6 +268,9 @@ class PageController extends BaseController {
 	}
 
 	function run() {
+		// Check if the user is running the app for the first time
+		// Or if the cooldown period (24 hours) has been reached
+		
 		if(Auth::user()->firstrun == 0) {
 			$table = $this->scrapePage();
 			$this->storeData($table);
@@ -286,18 +289,12 @@ class PageController extends BaseController {
 	}
 
 	public function showStats() {
-		$error = false;
 		try {
 			$dataJSON = $this->run();
 		} catch (InvalidArgumentException $e) {
-			$error = true;
-		}
-		if($error) {
 			return Redirect::action('UsersController@manage')->with('message', 'Could not authenticate with Purdue. Please make sure your PUID and email are correct.');
 		}
-		else {
-			$data['name'] = "Stats";
-			return View::make('stats', compact('data', 'dataJSON'));
-		}
+		$data['name'] = "Stats";
+		return View::make('stats', compact('data', 'dataJSON'));
 	}
 }
