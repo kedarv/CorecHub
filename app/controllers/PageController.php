@@ -6,6 +6,7 @@ ini_set('xdebug.var_display_max_children', 256);
 ini_set('xdebug.var_display_max_data', 20000);
 
 class PageController extends BaseController {
+
 	/**
 	* Finds a string between two strings
 	*
@@ -23,6 +24,10 @@ class PageController extends BaseController {
 		return substr($string,$ini,$len);
 	}
 
+	/**
+	* Scrapes the CoRec website for data
+	* @return Array of check-in data
+	*/
 	function scrapePage() {
 		// Initalize Client, set options
 		$client = new Client();
@@ -53,7 +58,14 @@ class PageController extends BaseController {
 
 		// Generate Time
 		$timeEnd = date("m/d/Y", time()); // Today's Date
-		$timeStart = date("m/d/Y", strtotime($timeEnd . '-1 year')); // One year ago from today
+
+		if(Auth::user()->firstrun == 0) {
+			$timeStart = date("m/d/Y", strtotime($timeEnd . '-1 year')); // One year ago from today
+		}
+		else {
+			$timeStart = date("m/d/Y", Auth::user()->lastrun);
+		}
+
 		// Find the history form, input values
 		$form = $crawler->filterXPath('//*[@id="hhhistory"]')->form(array(
 			'xxpassbeg' => $timeStart,
@@ -270,16 +282,16 @@ class PageController extends BaseController {
 	function run() {
 		// Check if the user is running the app for the first time
 		// Or if the cooldown period (24 hours) has been reached
-		
-		if(Auth::user()->firstrun == 0) {
+		if(Auth::user()->firstrun == 0 || ((time() - Auth::user()->lastrun) > 86400))  {
 			$table = $this->scrapePage();
 			$this->storeData($table);
 
 			$user = User::find(Auth::user()->id);
 			$user->firstrun = 1;
+			$user->lastrun = time();
+			$user->touch();
 			$user->save();
 		}
-		
 		$checkin = Checkin::where('userid', '=', Auth::user()->id)->get(array("day", "time"))->toArray();
 		return $this->processData($checkin);
 	}
