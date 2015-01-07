@@ -299,14 +299,16 @@ class PageController extends BaseController {
 		$data['name'] = "Home";
 		return View::make('home', compact('data'));
 	}
-
-	public function showStats() {
+	public function renderStats() {
 		try {
 			$dataJSON = $this->run();
 		} catch (InvalidArgumentException $e) {
 			return Redirect::action('UsersController@manage')->with('message', 'Could not authenticate with Purdue. Please make sure your PUID and email are correct.');
 		}
+		return View::make('renders', compact('dataJSON'));
+	}
+	public function showStats() {
 		$data['name'] = "Stats";
-		return View::make('stats', compact('data', 'dataJSON'));
+		return View::make('stats', compact('data'));
 	}
 }

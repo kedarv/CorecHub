@@ -10,7 +10,8 @@
 		"behat/mink-goutte-driver": "*",
 		"fabpot/goutte": "~2.0",
 		"guzzlehttp/guzzle": "*",
-		"greggilbert/recaptcha": "dev-master"
+		"greggilbert/recaptcha": "dev-master",
+		"barryvdh/laravel-debugbar": "~1.8"
 	},
 	"autoload": {
 		"classmap": [
