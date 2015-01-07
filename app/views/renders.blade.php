@@ -1,5 +1,6 @@
 <script type="text/javascript">
-	$(".message").slideUp(800);
+	$(".message").slideUp(700);
+	$(".visualization").fadeIn(1200);
 	var cal = new CalHeatMap();
 	cal.init({
 		itemSelector: "#cal-heatmap",
