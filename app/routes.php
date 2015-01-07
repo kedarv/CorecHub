@@ -13,17 +13,17 @@
 Route::when('*', 'csrf', array('post', 'put', 'delete'));
 
 Route::get('/', 'PageController@home');
-Route::get('stats', 'PageController@showStats');
-Route::get('render', 'PageController@renderStats');
+Route::get('stats', array('before' => 'auth', 'uses' => 'PageController@showStats'));
+Route::get('render', array('before' => 'auth', 'uses' => 'PageController@renderStats'));
 
 // User Routes
 Route::post('users/create', 'UsersController@create');
 Route::post('users/login', 'UsersController@doLogin');
-Route::post('users/manage', 'UsersController@doManage');
-Route::get('users/manage', 'UsersController@manage');
+Route::post('users/manage', array('before' => 'auth', 'uses' => 'UsersController@doManage'));
+Route::get('users/manage', array('before' => 'auth', 'uses' => 'UsersController@manage'));
 
-Route::get('users/forgot_password', 'UsersController@forgotPassword');
-Route::post('users/forgot_password', 'UsersController@doForgotPassword');
-Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
-Route::post('users/reset_password', 'UsersController@doResetPassword');
+// Route::get('users/forgot_password', 'UsersController@forgotPassword');
+// Route::post('users/forgot_password', 'UsersController@doForgotPassword');
+// Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
+// Route::post('users/reset_password', 'UsersController@doResetPassword');
 Route::get('users/logout', 'UsersController@logout');
