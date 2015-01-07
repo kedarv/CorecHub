@@ -21,6 +21,11 @@
 </body>
 @if(!Auth::check())
 <script>
+	@if(Session::has('message'))
+		$('#myModal').modal('show');
+		$('#error').removeClass('hide').addClass('alert-danger').fadeIn("slow").html("{{Session::get('message')}}");
+	@endif
+
 	$('#login').submit(function(e){
 		e.preventDefault();
 		var $form = $( this ),
