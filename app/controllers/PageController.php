@@ -73,8 +73,8 @@ class PageController extends BaseController {
 		));
 		$submit = $client->submit($form);
 
-		// Find history table, grab the the third table in the page
-		$crawler = $submit->filterXPath('//table')->eq(2);
+		// Find history table, grab the the last table in the page
+		$crawler = $submit->filterXPath('//table')->last();
 		$table = "<table>" . $crawler->html() . "</table>";
 
 		// Initalize DomDocument, set config options
