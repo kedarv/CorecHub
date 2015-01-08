@@ -65,7 +65,7 @@
 							{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg"))}}
 						</div>
 						<div class="form-group">
-							{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg"))}}
+							{{Form::password("password", array("placeholder" => "Password (NOT your Purdue Password)", "class" => "form-control input-lg"))}}
 						</div>
 						<div class="form-group">
 							{{--Form::captcha()--}}
