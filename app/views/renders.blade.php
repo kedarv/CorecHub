@@ -9,6 +9,7 @@
 		domainDynamicDimension: true,
 		domainGutter: 0,
 		data: {{$dataJSON['heat']}},
+		dataType: "json",
 		start: new Date(2014, 0),
 		cellSize: 12,
 		range: 12,
@@ -169,7 +170,12 @@ function showData(data) {
     			return d + " check-in(s)";
     		}).
     		attr("r", function(d) {
-    			return d / max * 14;
+    			if(d == 1) {
+    				return ((d+.5)/ max) * 14;
+    			}
+    			else {
+    				return (d/ max) * 14;
+    			}
     		}).
     		attr("transform", function() {
     			tx = pane_left - 2 * margin + x(j);

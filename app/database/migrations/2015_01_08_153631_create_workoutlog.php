@@ -1,9 +1,7 @@
 <?php
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCheckin extends Migration
+class CreateWorkoutlog extends Migration
 {
     /**
      * Run the migrations.
@@ -11,11 +9,12 @@ class CreateCheckin extends Migration
     public function up()
     {
         // Creates the users table
-        Schema::create('checkin', function ($table) {
+        Schema::create('workoutlog', function ($table) {
             $table->increments('id');
-            $table->integer('userid');
-            $table->integer('day');
-            $table->integer('time');
+            $table->string('checkinid');
+            $table->text('json');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -24,6 +23,6 @@ class CreateCheckin extends Migration
      */
     public function down()
     {
-        Schema::drop('checkin');
+        Schema::drop('users');
     }
 }
