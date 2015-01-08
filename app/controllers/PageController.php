@@ -303,7 +303,8 @@ class PageController extends BaseController {
 		try {
 			$dataJSON = $this->run();
 		} catch (InvalidArgumentException $e) {
-			return Redirect::action('UsersController@manage')->with('message', 'Could not authenticate with Purdue. Please make sure your PUID and email are correct.');
+			//return Redirect::action('UsersController@manage')->with('message', 'Could not authenticate with Purdue. Please make sure your PUID and email are correct.');
+			return "<script>window.location.href ='" . URL::action('UsersController@manageBadInfo') . "';</script>";
 		}
 		return View::make('renders', compact('dataJSON'));
 	}

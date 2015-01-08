@@ -79,6 +79,10 @@ class UsersController extends Controller {
     	$data['name'] = "Manage Account";
     	return View::make('user/manage', compact('data'));
     }
+
+    public function manageBadInfo() {
+       return Redirect::action('UsersController@manage')->with('message', 'Could not authenticate with Purdue. Please make sure your PUID and email are correct.');
+    }
     public function doManage() {
         if (Request::ajax()) {
             $validator = Validator::make(

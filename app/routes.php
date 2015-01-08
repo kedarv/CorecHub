@@ -21,6 +21,7 @@ Route::post('users/create', 'UsersController@create');
 Route::post('users/login', 'UsersController@doLogin');
 Route::post('users/manage', array('before' => 'auth', 'uses' => 'UsersController@doManage'));
 Route::get('users/manage', array('before' => 'auth', 'uses' => 'UsersController@manage'));
+Route::get('users/managebadinfo', array('before' => 'auth', 'uses' => 'UsersController@manageBadInfo'));
 
 // Route::get('users/forgot_password', 'UsersController@forgotPassword');
 // Route::post('users/forgot_password', 'UsersController@doForgotPassword');
