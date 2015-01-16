@@ -110,18 +110,16 @@ class PageController extends BaseController {
 
 		// Go through each td block
 		foreach($eloquentTable as $t) {
-			// if(strpos(date("D j", $t['day']), "Sun") !== false) {
-			// 	var_dump(date("D j", $t['day']) . " ~ " . $t['day']);
-			// }
 			// Store in punchcard array.
 			$dataPunch[$t['day']] = $t['time'];
 
 			// Store heatmap values
-			if(isset($dataHeat[$t['day']])) { // Check if the value exists, if it has increment
-				$dataHeat[$t['day']]++;
+			// Add 86400 seconds (1 day) to fix offset
+			if(isset($dataHeat[$t['day']+86400])) { // Check if the value exists, if it has increment
+				$dataHeat[$t['day']+86400]++;
 			}
 			else { // If the value does not increment, set it to 1
-				$dataHeat[$t['day']] = 1;
+				$dataHeat[$t['day']+86400] = 1;
 			}
 		}
 			

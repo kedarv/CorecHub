@@ -11,10 +11,11 @@ class CreateWorkoutlog extends Migration
         // Creates the users table
         Schema::create('workoutlog', function ($table) {
             $table->increments('id');
-            $table->string('checkinid');
-            $table->text('json');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->integer('checkinid');
+            $table->integer('exerciseid');
+            $table->integer('weight');
+            $table->integer('reps');
+
         });
     }
 

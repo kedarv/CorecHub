@@ -10,7 +10,7 @@
 		domainGutter: 0,
 		data: {{$dataJSON['heat']}},
 		dataType: "json",
-		start: new Date(2014, 0),
+		start: new Date({{date("Y, m, d", time()-31557600)}}),
 		cellSize: 12,
 		range: 12,
 		legend: [1],
