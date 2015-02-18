@@ -282,15 +282,23 @@ class PageController extends BaseController {
 	function run() {
 		// Check if the user is running the app for the first time
 		// Or if the cooldown period (24 hours) has been reached
-		if(Auth::user()->firstrun == 0 || ((time() - Auth::user()->lastrun) > 86400))  {
+		if(Auth::user()->firstrun == 0 || Session::has('rerun'))  {
 			$table = $this->scrapePage();
 			$this->storeData($table);
 
 			$user = User::find(Auth::user()->id);
-			$user->firstrun = 1;
+			if(Auth::user()->firstrun == 0) {
+				$user->firstrun = 1;
+			}
 			$user->lastrun = time();
 			$user->touch();
 			$user->save();
+			Session::forget('rerun');
+			Log::error("destroy");
+		}
+		elseif((time() - Auth::user()->lastrun) > 0) {
+			Session::put('rerun', 'true');
+			Log::error("ok");
 		}
 		$checkin = Checkin::where('userid', '=', Auth::user()->id)->get(array("day", "time"))->toArray();
 		return $this->processData($checkin);

@@ -1,9 +1,16 @@
 <script type="text/javascript">
+	@if(Session::has('rerun'))
+		var reload = true;
+	@endif
 	$(".message").slideUp(700);
 	$(".visualization").fadeIn(1200);
 	var cal = new CalHeatMap();
 	cal.init({
-		itemSelector: "#cal-heatmap",
+			@if(Session::has('rerun'))
+				itemSelector: "#cal-heatmap1",
+			@else
+				itemSelector: "#cal-heatmap",
+			@endif
 		domain: "month",
 		subDomain: "day",
 		domainDynamicDimension: true,
@@ -17,7 +24,7 @@
 		legendColors: ["#2E2E2E", "#E3AE24"],
 		onClick: function(date, nb) {
 			$("#onClick-placeholder").html("You just clicked <br/>on <b>" +
-				date + "</b> <br/>with <b>" +
+				Date.parse(date)/1000 + "</b> <br/>with <b>" +
 				(nb === null ? "unknown" : nb) + "</b> items"
 				);
 		},		

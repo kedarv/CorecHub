@@ -15,6 +15,7 @@ Route::when('*', 'csrf', array('post', 'put', 'delete'));
 Route::get('/', 'PageController@home');
 Route::get('stats', array('before' => 'auth', 'uses' => 'PageController@showStats'));
 Route::get('render', array('before' => 'auth', 'uses' => 'PageController@renderStats'));
+//Route::get('rerender', array('before' => 'auth', 'uses' => 'PageController@reRenderStats'));
 
 // User Routes
 Route::post('users/create', 'UsersController@create');

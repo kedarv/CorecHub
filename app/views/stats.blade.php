@@ -9,6 +9,7 @@
 			<div class="message alert alert-info">Loading data...</div>
 			<div class="visualization">
 				<div id="cal-heatmap"></div>
+				<div id="cal-heatmap1"></div>
 				<div id="onClick-placeholder"></div>
 			</div>
 		</div>
@@ -26,7 +27,14 @@
 <script>
 	$(document).ready(function() {
 		$(".visualization").hide();
-		$("#result").load("{{action('PageController@renderStats')}}");
+		$("#result").load("{{action('PageController@renderStats')}}", function() {
+			if(reload) {
+				$("#result").load("{{action('PageController@renderStats')}}", function() {
+					$("#cal-heatmap1").empty();
+					console.log("hello");
+				});
+			}
+		});
 	});
 </script>
 <div id="result"></div>
