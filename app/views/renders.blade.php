@@ -1,6 +1,8 @@
 <script type="text/javascript">
 	@if(Session::has('rerun'))
 		var reload = true;
+	@else
+		var reload = false;
 	@endif
 	$(".message").slideUp(700);
 	$(".visualization").fadeIn(1200);
