@@ -32,8 +32,7 @@
 			if(reload) {
 				$("#result").load("{{action('PageController@renderStats')}}", function() {
 					$("#cal-heatmap1").empty();
-					$("#punchcard1").empty();					
-					console.log("hello");
+					$("#punchcard1").empty();
 				});
 			}
 		});
