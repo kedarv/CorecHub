@@ -19,6 +19,7 @@
 			<div class="visualization">
 				<div class="text-center">
 					<div id="punchcard"></div>
+					<div id="punchcard1"></div>
 				</div>
 			</div>
 		</div>
@@ -31,6 +32,7 @@
 			if(reload) {
 				$("#result").load("{{action('PageController@renderStats')}}", function() {
 					$("#cal-heatmap1").empty();
+					$("#punchcard1").empty();					
 					console.log("hello");
 				});
 			}

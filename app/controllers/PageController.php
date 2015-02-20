@@ -296,7 +296,7 @@ class PageController extends BaseController {
 			Session::forget('rerun');
 			Log::error("destroy");
 		}
-		elseif((time() - Auth::user()->lastrun) > 0) {
+		elseif((time() - Auth::user()->lastrun) > 86400) {
 			Session::put('rerun', 'true');
 			Log::error("ok");
 		}

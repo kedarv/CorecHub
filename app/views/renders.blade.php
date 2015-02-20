@@ -66,7 +66,11 @@ range([2 * margin, height - 10 * margin]);
 
 // The main SVG element.
 var punchcard = d3.
-select("#punchcard").
+	@if(Session::has('rerun'))
+		select("#punchcard1").
+	@else
+		select("#punchcard").
+	@endif
 append("svg").
 attr("width", width - 2 * margin).
 attr("height", height - 2 * margin).
