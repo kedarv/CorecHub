@@ -7,7 +7,7 @@
 	<meta name="_token" content="{{ csrf_token() }}"/>
 	<title>{{$data['name']}}</title>
 	{{ HTML::style('css/dist.min.css')}}
-	{{ HTML::style('//fonts.googleapis.com/css?family=Oswald:700,400')}}
+	{{ HTML::style('//fonts.googleapis.com/css?family=Oswald:700,400|Roboto+Condensed')}}
 	{{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')}}
 	{{HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')}}
 	{{HTML::script('//d3js.org/d3.v3.min.js')}}

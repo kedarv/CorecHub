@@ -6,7 +6,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var minify = require('gulp-minify-css');
-
+var watch = require('gulp-watch');
 // Compress
 gulp.task('styles', function() {
   gulp.src(['public/css/*.css', '!public/css/dist.min.css'])
@@ -23,5 +23,9 @@ gulp.task('scripts', function() {
   .pipe(gulp.dest('public/js/', {overwrite: true}));
 });
 
+gulp.task('watch', function() {
+    gulp.watch('public/css/style.css', ['styles']);
+});
+
 // Default Task
-gulp.task('default', ['styles', 'scripts']);
+gulp.task('default', ['styles', 'scripts', 'watch']);

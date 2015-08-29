@@ -102,6 +102,6 @@ return array(
 	|
 	*/
 
-	'attributes' => array(),
+	'attributes' => array('puid' => 'PUID'),
 
 );
