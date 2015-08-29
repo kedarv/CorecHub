@@ -158,101 +158,101 @@ class PageController extends BaseController {
 			}
 		}
 
-			// Initalize 7 arrays with 24 slots, one for each hour (initalized to 0 <- not sure if this necessary)
-			$monday = array_fill(0, 24, 0);
-			$tuesday = array_fill(0, 24, 0);
-			$wednesday = array_fill(0, 24, 0);
-			$thursday = array_fill(0, 24, 0);
-			$friday = array_fill(0, 24, 0);
-			$saturday = array_fill(0, 24, 0);
-			$sunday = array_fill(0, 24, 0);
+		// Initalize 7 arrays with 24 slots, one for each hour (initalized to 0 <- not sure if this necessary)
+		$monday = array_fill(0, 24, 0);
+		$tuesday = array_fill(0, 24, 0);
+		$wednesday = array_fill(0, 24, 0);
+		$thursday = array_fill(0, 24, 0);
+		$friday = array_fill(0, 24, 0);
+		$saturday = array_fill(0, 24, 0);
+		$sunday = array_fill(0, 24, 0);
 
-			$i = 1;
+		$i = 1;
 
-				// Sort the array 1 to 7, just in case
-			ksort($week);
+		// Sort the array 1 to 7, just in case
+		ksort($week);
 
-				// Messy code that fills in the array for each day. This should be consolidated in the future.
-			foreach($week as $day) {
-				foreach($day as $occurance) {
-					switch($i) {
-						case 1:
-						if(isset($monday[date('G', $occurance)])) {
-							$monday[date('G', $occurance)]++;
-						}
-						else {
-							$monday[date('G', $occurance)] = 1;
-						}
-						break;
-
-						case 2:
-						if(isset($tuesday[date('G', $occurance)])) {
-							$tuesday[date('G', $occurance)]++;
-						}
-						else {
-							$tuesday[date('G', $occurance)] = 1;
-						}
-						break;
-
-						case 3:
-						if(isset($wednesday[date('G', $occurance)])) {
-							$wednesday[date('G', $occurance)]++;
-						}
-						else {
-							$wednesday[date('G', $occurance)] = 1;
-						}
-						break;
-
-						case 4:
-						if(isset($thursday[date('G', $occurance)])) {
-							$thursday[date('G', $occurance)]++;
-						}
-						else {
-							$thursday[date('G', $occurance)] = 1;
-						}
-						break;
-
-						case 5:
-						if(isset($friday[date('G', $occurance)])) {
-							$friday[date('G', $occurance)]++;
-						}
-						else {
-							$friday[date('G', $occurance)] = 1;
-						}
-						break;
-
-						case 6:
-						if(isset($saturday[date('G', $occurance)])) {
-							$saturday[date('G', $occurance)]++;
-						}
-						else {
-							$saturday[date('G', $occurance)] = 1;
-						}
-						break;
-
-						case 7:
-						if(isset($sunday[date('G', $occurance)])) {
-							$sunday[date('G', $occurance)]++;
-						}
-						else {
-							$sunday[date('G', $occurance)] = 1;
-						}
-						break;
+		// Messy code that fills in the array for each day. This should be consolidated in the future.
+		foreach($week as $day) {
+			foreach($day as $occurance) {
+				switch($i) {
+					case 1:
+					if(isset($monday[date('G', $occurance)])) {
+						$monday[date('G', $occurance)]++;
 					}
+					else {
+						$monday[date('G', $occurance)] = 1;
+					}
+					break;
+
+					case 2:
+					if(isset($tuesday[date('G', $occurance)])) {
+						$tuesday[date('G', $occurance)]++;
+					}
+					else {
+						$tuesday[date('G', $occurance)] = 1;
+					}
+					break;
+
+					case 3:
+					if(isset($wednesday[date('G', $occurance)])) {
+						$wednesday[date('G', $occurance)]++;
+					}
+					else {
+						$wednesday[date('G', $occurance)] = 1;
+					}
+					break;
+
+					case 4:
+					if(isset($thursday[date('G', $occurance)])) {
+						$thursday[date('G', $occurance)]++;
+					}
+					else {
+						$thursday[date('G', $occurance)] = 1;
+					}
+					break;
+
+					case 5:
+					if(isset($friday[date('G', $occurance)])) {
+						$friday[date('G', $occurance)]++;
+					}
+					else {
+						$friday[date('G', $occurance)] = 1;
+					}
+					break;
+
+					case 6:
+					if(isset($saturday[date('G', $occurance)])) {
+						$saturday[date('G', $occurance)]++;
+					}
+					else {
+						$saturday[date('G', $occurance)] = 1;
+					}
+					break;
+
+					case 7:
+					if(isset($sunday[date('G', $occurance)])) {
+						$sunday[date('G', $occurance)]++;
+					}
+					else {
+						$sunday[date('G', $occurance)] = 1;
+					}
+					break;
 				}
-				$i++;
 			}
+			$i++;
+		}
 
-				// Put everything in the dataJSON variable
-			$dataJSON['heat'] = json_encode($dataHeat);
+		// Put everything in the dataJSON variable
+		$dataJSON['heat'] = json_encode($dataHeat);
 
-			$dataJSON['monday'] = json_encode($monday);
-			$dataJSON['tuesday'] = json_encode($tuesday);
-			$dataJSON['wednesday'] = json_encode($wednesday);
-			$dataJSON['thursday'] = json_encode($thursday);
-			$dataJSON['friday'] = json_encode($friday);
-			$dataJSON['saturday'] = json_encode($saturday);
-			$dataJSON['sunday'] = json_encode($sunday);
+		$dataJSON['monday'] = json_encode($monday);
+		$dataJSON['tuesday'] = json_encode($tuesday);
+		$dataJSON['wednesday'] = json_encode($wednesday);
+		$dataJSON['thursday'] = json_encode($thursday);
+		$dataJSON['friday'] = json_encode($friday);
+		$dataJSON['saturday'] = json_encode($saturday);
+		$dataJSON['sunday'] = json_encode($sunday);
 		return $dataJSON;
 	}
 

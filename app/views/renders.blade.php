@@ -15,7 +15,7 @@
 			@endif
 		domain: "month",
 		subDomain: "day",
-		domainDynamicDimension: true,
+		domainDynamicDimension: false,
 		domainGutter: 0,
 		data: {{$dataJSON['heat']}},
 		dataType: "json",
