@@ -31,7 +31,7 @@
 				</li>
 				@else
 				<li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background: rgba(0,0,0,.6)">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -42,10 +42,10 @@
 							<div class="modal-body">
 								<div id="error" class="alert no-display"></div>
 								<div class="form-group">
-									{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg", "id" => "email"))}}
+									{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg input-roboto", "id" => "email"))}}
 								</div>
 								<div class="form-group">
-									{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg", "id" => "password"))}}
+									{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg input-roboto", "id" => "password"))}}
 								</div>
 								<div class="form-group">
 									{{--Form::captcha()--}}

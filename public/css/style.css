@@ -105,10 +105,12 @@ hr {
   color: #ffffff;
   background-color: #E3AE24;
   border-color: #C09318;
-  font-family: Oswald, sans-serif;
 }
 .btn-newgold:hover, .btn-newgold:focus {
   color: #EEE;
+}
+.oswald {
+  font-family: Oswald, sans-serif;
 }
 .form-control:focus {
   border-color: #E3AE24;
@@ -387,6 +389,6 @@ hr {
   /*background: #000;*/
   border:none;
 }
-.input-signup {
+.input-roboto {
 	font-family: 'Roboto Condensed', sans-serif;
 }

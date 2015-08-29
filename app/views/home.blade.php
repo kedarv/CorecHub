@@ -59,18 +59,18 @@
 					@if(!Auth::check())
 						{{Form::open(array('action' => 'UsersController@create', 'id' => 'signup'))}}
 						<div class="form-group">
-							{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg input-signup"))}}
+							{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg input-roboto"))}}
 						</div>
 						<div class="form-group">
-							{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg input-signup"))}}
+							{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg input-roboto"))}}
 						</div>
 						<div class="form-group">
-							{{Form::password("password", array("placeholder" => "Password (NOT your Purdue Password)", "class" => "form-control input-lg input-signup"))}}
+							{{Form::password("password", array("placeholder" => "Password (NOT your Purdue Password)", "class" => "form-control input-lg input-roboto"))}}
 						</div>
 						<div class="form-group">
 							{{--Form::captcha()--}}
 						</div>
-						{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-newgold btn-lg btn-block"))}}
+						{{Form::submit('Sign Up for CorecHub', array("class" => "btn btn-newgold btn-lg btn-block oswald"))}}
 						{{Form::close()}}
 					@endif
 				</div>
