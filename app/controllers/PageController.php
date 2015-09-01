@@ -107,7 +107,7 @@ class PageController extends BaseController {
 		}
 
 	function processData($eloquentTable) {
-
+		$counter = 0;
 		// Go through each td block
 		foreach($eloquentTable as $t) {
 			// Store in punchcard array.
@@ -121,6 +121,7 @@ class PageController extends BaseController {
 			else { // If the value does not increment, set it to 1
 				$dataHeat[$t['day']+86400] = 1;
 			}
+			$counter++;
 		}
 			
 		// This foreach loop converts unix timestamps of the day to a number from 1 to 7
@@ -253,6 +254,7 @@ class PageController extends BaseController {
 		$dataJSON['friday'] = json_encode($friday);
 		$dataJSON['saturday'] = json_encode($saturday);
 		$dataJSON['sunday'] = json_encode($sunday);
+		$dataJSON['counter'] = json_encode($counter);
 		return $dataJSON;
 	}
 

@@ -59,13 +59,13 @@
 					@if(!Auth::check())
 						{{Form::open(array('action' => 'UsersController@create', 'id' => 'signup'))}}
 						<div class="form-group">
-							{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg input-roboto"))}}
+							{{Form::text("puid", null, array("placeholder" => "PUID", "class" => "form-control input-lg roboto"))}}
 						</div>
 						<div class="form-group">
-							{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg input-roboto"))}}
+							{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg roboto"))}}
 						</div>
 						<div class="form-group">
-							{{Form::password("password", array("placeholder" => "Password (NOT your Purdue Password)", "class" => "form-control input-lg input-roboto"))}}
+							{{Form::password("password", array("placeholder" => "Password (NOT your Purdue Password)", "class" => "form-control input-lg roboto"))}}
 						</div>
 						<div class="form-group">
 							{{--Form::captcha()--}}
@@ -79,7 +79,7 @@
 	</div>
 </header>
 <div class="container">
-	<hr/>
+	<br/>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			<div class="box">

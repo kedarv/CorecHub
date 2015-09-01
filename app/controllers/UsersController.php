@@ -89,10 +89,20 @@ class UsersController extends Controller {
                 array(
                     'puid' => Input::get('puid'),
                     'email' => Input::get('email'),
+                    'firstname' => Input::get('firstname'),
+                    'lastname' => Input::get('lastname'),
+                    'gender' => Input::get('gender'),
+                    'height' => Input::get('height'),
+                    'weight' => Input::get('weight'),
                     ),
                 array(
                     'puid' => 'required|numeric',
                     'email' => 'required|email|unique:users,email,'.Auth::user()->id,
+                    'firstname' => 'alpha_dash',
+                    'lastname' => 'alpha_dash',
+                    'gender' => 'numeric',
+                    'height' => 'numeric',
+                    'weight' => 'numeric',
                     )
                 );
             if ($validator->fails()) {
@@ -102,6 +112,11 @@ class UsersController extends Controller {
                 $user = User::find(Auth::user()->id);
                 $user->puid = Crypt::encrypt(Input::get('puid'));
                 $user->email = Input::get('email');
+                $user->firstname = Input::get('firstname');
+                $user->lastname = Input::get('lastname');
+                $user->gender = Input::get('gender');
+                $user->height =Input::get('height');
+                $user->weight = Input::get('weight');
                 $user->save();
                 $response = array('status' => 'success', 'text' => 'Success');
             }

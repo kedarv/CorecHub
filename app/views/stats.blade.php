@@ -1,11 +1,18 @@
 @extends('layout')
+@section('append_head')
+<style>
+body {
+	background: #2B2B2B
+}
+</style>
+@stop
 @section('content')
 
 <div class="container container-light">
 	<br/>
-	
 	<div class="well">
 		<div class="well well-light">
+			<h3 class="header_text roboto">You've been to the CoRec <span id="counter">{loading}</span> times in the past year.</h3>
 			<div class="message alert alert-info">Loading data...</div>
 			<div class="visualization">
 				<div id="cal-heatmap"></div>

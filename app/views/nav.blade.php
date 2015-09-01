@@ -24,7 +24,8 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{strstr(Auth::user()->email,'@', true)}} <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="{{action('UsersController@manage')}}"><i class="fa fa-user"></i> Manage Account</a></li>
+						<li><a href="{{action('UsersController@manage')}}"><i class="fa fa-user"></i> View Profile</a></li>
+						<li><a href="{{action('UsersController@manage')}}"><i class="fa fa-cogs"></i> Manage Account</a></li>
 						<li class="divider"></li>
 						<li><a href="{{action('UsersController@logout')}}"><i class="fa fa-power-off"></i> Log Out</a></li>
 					</ul>
@@ -42,10 +43,10 @@
 							<div class="modal-body">
 								<div id="error" class="alert no-display"></div>
 								<div class="form-group">
-									{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg input-roboto", "id" => "email"))}}
+									{{Form::email("email", null, array("placeholder" => "user@purdue.edu", "class" => "form-control input-lg roboto", "id" => "email"))}}
 								</div>
 								<div class="form-group">
-									{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg input-roboto", "id" => "password"))}}
+									{{Form::password("password", array("placeholder" => "Password", "class" => "form-control input-lg roboto", "id" => "password"))}}
 								</div>
 								<div class="form-group">
 									{{--Form::captcha()--}}

@@ -4,8 +4,10 @@
 	@else
 		var reload = false;
 	@endif
-	$(".message").slideUp(700);
+	var counter = {{$dataJSON['counter']}}
+	$(".message").slideUp(300);
 	$(".visualization").fadeIn(1200);
+	$("#counter").html(counter);
 	var cal = new CalHeatMap();
 	cal.init({
 			@if(Session::has('rerun'))

@@ -389,6 +389,10 @@ hr {
   /*background: #000;*/
   border:none;
 }
-.input-roboto {
+.roboto {
 	font-family: 'Roboto Condensed', sans-serif;
+}
+.header_text {
+  margin-top: 0px;
+  color: #fff;
 }

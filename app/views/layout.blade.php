@@ -12,11 +12,11 @@
 	{{HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')}}
 	{{HTML::script('//d3js.org/d3.v3.min.js')}}
 	{{HTML::script('js/dist.min.js')}}
+	@yield('append_head')
 </head>
 
 <body>
 	@include('nav')
-
 	@yield('content')
 </body>
 @if(!Auth::check())
