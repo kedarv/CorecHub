@@ -24,6 +24,6 @@ class CreateWorkoutlog extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('workoutlog');
     }
 }

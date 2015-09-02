@@ -11,7 +11,8 @@
 		"fabpot/goutte": "~2.0",
 		"guzzlehttp/guzzle": "*",
 		"greggilbert/recaptcha": "1.1.5",
-		"barryvdh/laravel-debugbar": "~1.8"
+		"barryvdh/laravel-debugbar": "~1.8",
+		"barryvdh/laravel-migration-generator": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

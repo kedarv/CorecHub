@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Greggilbert\Recaptcha\RecaptchaServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Barryvdh\MigrationGenerator\MigrationGeneratorServiceProvider',
 
 	),
 
