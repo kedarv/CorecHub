@@ -309,6 +309,18 @@ class PageController extends BaseController {
 		$data['name'] = "Home";
 		return View::make('home', compact('data'));
 	}
+	public function tempsearch() {
+		$data['name'] = "tempsearch";
+		return View::make('tempsearch', compact('data'));
+	}
+	public function ajaxSearch() {
+		$results = array();
+		$query = Exercise::where('name', 'LIKE', "%" . Input::get('keyword') . "%")->get(array('id', 'name', 'category'));
+		foreach($query as $r) {
+			$results[$r->id] = ['name' => $r->name, 'category' => $r->category];
+		}
+		return Response::json($results);
+	}
 	public function renderStats() {
 		try {
 			$dataJSON = $this->run();

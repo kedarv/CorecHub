@@ -10,16 +10,16 @@ class ExerciseTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('exercise')->delete();
-        Exercise::create(array('id'=> 1, 'name' => 'Overhead Press', 'category' => 1, 'type' => 0));
-        Exercise::create(array('id'=> 2, 'name' => 'Seated Dumbbell Press', 'category' => 1, 'type' => 0));
-        Exercise::create(array('id'=> 3, 'name' => 'Lateral Dumbbell Raise', 'category' => 1, 'type' => 0));
-        Exercise::create(array('id'=> 4, 'name' => 'Front Dumbbell Raise', 'category' => 1, 'type' => 0));
+        Exercise::create(array('id'=> 1, 'name' => 'Overhead Press', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/standing-military-press'));
+        Exercise::create(array('id'=> 2, 'name' => 'Seated Dumbbell Press', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/seated-dumbbell-press'));
+        Exercise::create(array('id'=> 3, 'name' => 'Lateral Dumbbell Raise', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/side-lateral-raise'));
+        Exercise::create(array('id'=> 4, 'name' => 'Front Dumbbell Raise', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/front-dumbbell-raise'));
         Exercise::create(array('id'=> 5, 'name' => 'Push Press', 'category' => 1, 'type' => 0));
         Exercise::create(array('id'=> 6, 'name' => 'Behind The Neck Barbell Press', 'category' => 1, 'type' => 0));
         Exercise::create(array('id'=> 7, 'name' => 'Hammer Strength Shoulder Press', 'category' => 1, 'type' => 0));
-        Exercise::create(array('id'=> 8, 'name' => 'Seated Dumbbell Lateral Raise', 'category' => 1, 'type' => 0));
-        Exercise::create(array('id'=> 9, 'name' => 'Lateral Machine Raise', 'category' => 1, 'type' => 0));
-        Exercise::create(array('id'=> 10, 'name' => 'Rear Delt Dumbbell Raise', 'category' => 1, 'type' => 0));
+        Exercise::create(array('id'=> 8, 'name' => 'Seated Dumbbell Lateral Raise', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/seated-side-lateral-raise'));
+        Exercise::create(array('id'=> 9, 'name' => 'Lateral Machine Raise', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/machine-lateral-raise'));
+        Exercise::create(array('id'=> 10, 'name' => 'Rear Delt Dumbbell Raise', 'category' => 1, 'type' => 0, 'bb_link' => 'http://www.bodybuilding.com/exercises/detail/view/name/dumbbell-lying-rear-lateral-raise'));
         Exercise::create(array('id'=> 11, 'name' => 'Rear Delt Machine Fly', 'category' => 1, 'type' => 0));
         Exercise::create(array('id'=> 12, 'name' => 'Arnold Dumbbell Press', 'category' => 1, 'type' => 0));
         Exercise::create(array('id'=> 13, 'name' => 'One-Arm Standing Dumbbell Press', 'category' => 1, 'type' => 0));
