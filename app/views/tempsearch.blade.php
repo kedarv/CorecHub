@@ -4,6 +4,15 @@
 body {
 	background: #2B2B2B
 }
+.well {
+    padding: 5px;
+}
+.well-light {
+    margin-bottom: 0px;
+}
+.panel-group {
+    margin-bottom: 0px;
+}
 </style>
 @stop
 @section('content')
@@ -12,9 +21,11 @@ body {
 	<br/>
 	<div class="well">
 		<div class="well well-light">
-			<form>
-				<input id="search">
-			</form>
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Search Exercises">
+            </div>
+            <hr/>
             <div class="panel-group" role="tablist">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="collapse-shoulders-heading">
@@ -148,10 +159,7 @@ $(function() {
     });
     $("#search").keyup(function() {
         var keyword = $("#search").val();
-        if(keyword=='') {
-        } else {
-            console.log(keyword);
-        } return false;
+        
     });
 });
 </script>
