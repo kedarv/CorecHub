@@ -13,6 +13,14 @@ body {
 .panel-group {
     margin-bottom: 0px;
 }
+.list-group-item {
+    background-color: #2D2D2D;
+    border: 1px solid #3A3A3A;
+    color: #fff;
+}
+.panel-default>.panel-heading {
+    color: #E0E0E0;
+}
 </style>
 @stop
 @section('content')
