@@ -17,7 +17,7 @@ Route::get('stats', array('before' => 'auth', 'uses' => 'PageController@showStat
 Route::get('render', array('before' => 'auth', 'uses' => 'PageController@renderStats'));
 Route::get('tempsearch', 'PageController@tempsearch');
 //Route::get('rerender', array('before' => 'auth', 'uses' => 'PageController@reRenderStats'));
-Route::post('search/exercise', 'PageController@ajaxSearch');
+Route::get('search/exercise', 'PageController@getExercises');
 // User Routes
 Route::post('users/create', 'UsersController@create');
 Route::post('users/login', 'UsersController@doLogin');

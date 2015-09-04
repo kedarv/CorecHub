@@ -313,9 +313,9 @@ class PageController extends BaseController {
 		$data['name'] = "tempsearch";
 		return View::make('tempsearch', compact('data'));
 	}
-	public function ajaxSearch() {
+	public function getExercises() {
 		$results = array();
-		$query = Exercise::where('name', 'LIKE', "%" . Input::get('keyword') . "%")->get(array('id', 'name', 'category'));
+		$query = Exercise::get(array('id', 'name', 'category'));
 		foreach($query as $r) {
 			$results[$r->id] = ['name' => $r->name, 'category' => $r->category];
 		}
