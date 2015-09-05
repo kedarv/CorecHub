@@ -23,6 +23,11 @@ body {
 }
 </style>
 @stop
+
+@section('append_js')
+{{HTML::script('js/fuse.min.js')}}
+@stop
+
 @section('content')
 
 <div class="container container-light">
@@ -31,8 +36,9 @@ body {
 		<div class="well well-light">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Search Exercises">
+                <input type="text" class="form-control" id="search" placeholder="Search Exercises">
             </div>
+            <div id="searched" style="color:#fff"></div>
             <hr/>
             <div class="panel-group" role="tablist">
                 <div class="panel panel-default">
@@ -162,12 +168,22 @@ $(function() {
     $.getJSON( "{{action('PageController@getExercises')}}", function(data) {
         json = data;
         $.each(data, function(key, val) {
-            $("#parent-" + val['category']).append( "<li class='list-group-item' + id='" + key + "'>" + val['name'] + "</li>" );
+            $("#parent-" + val['category']).append( "<li class='list-group-item' id=" + key +"'>" + val['name'] + "</li>" );
         });
     });
     $("#search").keyup(function() {
+    	$("#searched").html("");
         var keyword = $("#search").val();
-        
+        var options = {
+	  		keys: ['name']
+		}
+		var f = new Fuse(json, options);
+		var result = f.search(keyword);
+		$.each(result, function(key, val) {
+        	$("#searched").append(val['name'] + "<br/>");
+        	console.log(val['name']);
+        });
+		
     });
 });
 </script>

@@ -317,7 +317,7 @@ class PageController extends BaseController {
 		$results = array();
 		$query = Exercise::get(array('id', 'name', 'category'));
 		foreach($query as $r) {
-			$results[$r->id] = ['name' => $r->name, 'category' => $r->category];
+			$results[] = array('name' => $r->name, 'category' => $r->category);
 		}
 		return Response::json($results);
 	}
