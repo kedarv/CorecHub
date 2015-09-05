@@ -24,6 +24,12 @@ body {
 html {
   overflow-y: scroll;
 }
+.exercise_link {
+	color: #fff;
+}
+.exercise_link:hover, .exercise_link:active, .exercise_link:focus {
+	color: #cecece;
+}
 </style>
 @stop
 
@@ -171,7 +177,7 @@ $(function() {
     $.getJSON( "{{action('PageController@getExercises')}}", function(data) {
         json = data;
         $.each(data, function(key, val) {
-            $("#parent-" + val['category']).append("<li class='list-group-item' id=" + key +">" + val['name'] + "</li>");
+            $("#parent-" + val['category']).append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + ">" + val['name'] + "</a></li>");
         });
     });
     $("#search").keyup(function() {
@@ -186,7 +192,7 @@ $(function() {
         console.log(result);
 		$.each(result, function(key, val) {
 			if(counter < 10) {
-	        	$("#searched").append("<li class='list-group-item' id=" + val['id'] + ">" + val['name'] + "</li>");
+	        	$("#searched").append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + ">" + val['name'] + "</a></li>");
         		console.log(val['name']);
         		counter++;
         	}
@@ -196,6 +202,12 @@ $(function() {
         });
 		
     });
+
+	$(document).on('click', '.exercise_link', function(e) {
+		e.preventDefault();
+		$(this).blur();
+		console.log($(this).data("id"));
+	});
 });
 </script>
 @yield('render')
