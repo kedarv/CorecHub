@@ -21,6 +21,9 @@ body {
 .panel-default>.panel-heading {
     color: #E0E0E0;
 }
+html {
+  overflow-y: scroll;
+}
 </style>
 @stop
 
