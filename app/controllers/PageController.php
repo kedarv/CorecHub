@@ -309,9 +309,9 @@ class PageController extends BaseController {
 		$data['name'] = "Home";
 		return View::make('home', compact('data'));
 	}
-	public function tempsearch() {
-		$data['name'] = "tempsearch";
-		return View::make('tempsearch', compact('data'));
+	public function searchExercises() {
+		$data['name'] = "Search Exercises";
+		return View::make('searchexercises', compact('data'));
 	}
 	public function getExercises() {
 		$results = array();
