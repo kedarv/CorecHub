@@ -15,7 +15,7 @@ Route::when('*', 'csrf', array('post', 'put', 'delete'));
 Route::get('/', 'PageController@home');
 Route::get('stats', array('before' => 'auth', 'uses' => 'PageController@showStats'));
 Route::get('render', array('before' => 'auth', 'uses' => 'PageController@renderStats'));
-Route::get('search', 'PageController@searchexercises');
+Route::get('search', 'PageController@searchExercises');
 //Route::get('rerender', array('before' => 'auth', 'uses' => 'PageController@reRenderStats'));
 Route::get('search/exercise', 'PageController@getExercises');
 // User Routes

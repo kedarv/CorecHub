@@ -17,6 +17,7 @@
 				<li><a href="{{action('PageController@home')}}">Home</a></li>
 				@if(Auth::check())
 				<li><a href="{{action('PageController@showStats')}}">Stats</a></li>
+				<li><a href="{{action('PageController@searchExercises')}}">Track</a></li>
 				@endif
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
