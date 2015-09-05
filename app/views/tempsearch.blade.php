@@ -168,7 +168,7 @@ $(function() {
     $.getJSON( "{{action('PageController@getExercises')}}", function(data) {
         json = data;
         $.each(data, function(key, val) {
-            $("#parent-" + val['category']).append( "<li class='list-group-item' id=" + key +"'>" + val['name'] + "</li>" );
+            $("#parent-" + val['category']).append("<li class='list-group-item' id=" + key +"'>" + val['name'] + "</li>");
         });
     });
     $("#search").keyup(function() {
@@ -179,9 +179,16 @@ $(function() {
 		}
 		var f = new Fuse(json, options);
 		var result = f.search(keyword);
+		var counter = 0;
 		$.each(result, function(key, val) {
-        	$("#searched").append(val['name'] + "<br/>");
-        	console.log(val['name']);
+			if(counter < 10) {
+	        	$("#searched").append("<li class='list-group-item' id=" + key +"'>" + val['name'] + "</li>");
+        		console.log(val['name']);
+        		counter++;
+        	}
+        	else {
+        		return;
+        	}
         });
 		
     });
