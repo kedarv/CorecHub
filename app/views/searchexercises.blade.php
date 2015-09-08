@@ -43,6 +43,7 @@ html {
 	<br/>
 	<div class="well">
 		<div class="well well-light">
+			<div id="search-container">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
                 <input type="text" class="form-control" id="search" placeholder="Search Exercises">
@@ -169,6 +170,25 @@ html {
                 </div>                           
             </div>
 		</div>
+		<div id="track-container" style="display:none;">
+			<h2 id="exerciseName" class="header_text oswald">{exercise Name}</h2>
+
+    <ul id="myTabs" class="nav nav-tabs nav-justified" role="tablist">
+      <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Track</a></li>
+      <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">History</a></li>
+       <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Graph</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+      </div>
+    </div>
+
+		</div>
+		</div>
 	</div>
 </div>
 <script>
@@ -177,7 +197,7 @@ $(function() {
     $.getJSON( "{{action('PageController@getExercises')}}", function(data) {
         json = data;
         $.each(data, function(key, val) {
-            $("#parent-" + val['category']).append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + ">" + val['name'] + "</a></li>");
+            $("#parent-" + val['category']).append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + " data-name='" + val['name'] + "'>" + val['name'] + "</a></li>");
         });
     });
     $("#search").keyup(function() {
@@ -192,7 +212,7 @@ $(function() {
         console.log(result);
 		$.each(result, function(key, val) {
 			if(counter < 10) {
-	        	$("#searched").append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + ">" + val['name'] + "</a></li>");
+	        	$("#searched").append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + " data-name='" + val['name'] + "'>" + val['name'] + "</a></li>");
         		console.log(val['name']);
         		counter++;
         	}
@@ -207,6 +227,9 @@ $(function() {
 		e.preventDefault();
 		$(this).blur();
 		console.log($(this).data("id"));
+		$("#exerciseName").html($(this).data("name"));
+		$("#search-container").slideUp();
+		$("#track-container").slideDown();
 	});
 });
 </script>
