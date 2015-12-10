@@ -35,6 +35,16 @@ html {
 
 @section('append_js')
 {{HTML::script('js/fuse.min.js')}}
+
+{{HTML::script('js/plugin.min.js')}}
+{{HTML::script('js/velocity.min.js')}}
+{{HTML::script('js/bellows.min.js')}}
+<script>
+$('.bellows').bellows();
+</script>
+<style>
+.bellows__item:not(.bellows--is-open)>.bellows__content{display:none}.bellows__item.bellows--is-open>.bellows__content-wrapper,.bellows__item.bellows--is-closing>.bellows__content-wrapper{display:block}.bellows__content-wrapper{display:none}
+</style>
 @stop
 
 @section('content')
@@ -169,6 +179,33 @@ html {
                     </div>
                 </div>                           
             </div>
+                <div class="bellows">
+                    <!-- The Accordion Items -->
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            header
+                        </div>
+                        <div class="bellows__content" id="parentz-1">
+                            content
+                        </div>
+                    </div>
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Header</h3>
+                        </div>
+                        <div class="bellows__content">
+                            <p>Content</p>
+                        </div>
+                    </div>
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Header</h3>
+                        </div>
+                        <div class="bellows__content">
+                            <p>Content</p>
+                        </div>
+                    </div>
+            </div>
 		</div>
 		<div id="track-container" style="display:none;">
 			<h2 id="exerciseName" class="header_text oswald">{exercise Name}</h2>
@@ -198,6 +235,7 @@ $(function() {
         json = data;
         $.each(data, function(key, val) {
             $("#parent-" + val['category']).append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + " data-name='" + val['name'] + "'>" + val['name'] + "</a></li>");
+            $("#parentz-" + val['category']).append("<li class='list-group-item'><a href='#' class='exercise_link' data-id=" + val['id'] + " data-name='" + val['name'] + "'>" + val['name'] + "</a></li>");
         });
     });
     $("#search").keyup(function() {
