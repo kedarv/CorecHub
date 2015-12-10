@@ -183,26 +183,23 @@ $('.bellows').bellows();
                     <!-- The Accordion Items -->
                     <div class="bellows__item">
                         <div class="bellows__header">
-                            header
+                            Shoulders
                         </div>
                         <div class="bellows__content" id="parentz-1">
-                            content
                         </div>
                     </div>
                     <div class="bellows__item">
                         <div class="bellows__header">
-                            <h3>Header</h3>
+                            <h3>Triceps</h3>
                         </div>
-                        <div class="bellows__content">
-                            <p>Content</p>
+                        <div class="bellows__content" id="parentz-2">
                         </div>
                     </div>
                     <div class="bellows__item">
                         <div class="bellows__header">
-                            <h3>Header</h3>
+                            <h3>Biceps</h3>
                         </div>
-                        <div class="bellows__content">
-                            <p>Content</p>
+                        <div class="bellows__content" id="parentz-3">
                         </div>
                     </div>
             </div>
