@@ -60,7 +60,7 @@ $('.bellows').bellows();
             </div>
             <div id="searched" style="color:#fff"></div>
             <hr/>
-            <div class="panel-group" role="tablist">
+            <!-- <div class="panel-group" role="tablist">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="collapse-shoulders-heading">
                         <h4 class="panel-title">
@@ -178,7 +178,7 @@ $('.bellows').bellows();
                         </ul>
                     </div>
                 </div>                           
-            </div>
+            </div> -->
                 <div class="bellows">
                     <!-- The Accordion Items -->
                     <div class="bellows__item">
@@ -202,6 +202,41 @@ $('.bellows').bellows();
                         <div class="bellows__content" id="parentz-3">
                         </div>
                     </div>
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Chest</h3>
+                        </div>
+                        <div class="bellows__content" id="parentz-4">
+                        </div>
+                    </div>
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Back</h3>
+                        </div>
+                        <div class="bellows__content" id="parentz-5">
+                        </div>
+                    </div>
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Legs</h3>
+                        </div>
+                        <div class="bellows__content" id="parentz-6">
+                        </div>
+                    </div> 
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Abs</h3>
+                        </div>
+                        <div class="bellows__content" id="parentz-7">
+                        </div>
+                    </div>
+                    <div class="bellows__item">
+                        <div class="bellows__header">
+                            <h3>Cardio</h3>
+                        </div>
+                        <div class="bellows__content" id="parentz-8">
+                        </div>
+                    </div>              
             </div>
 		</div>
 		<div id="track-container" style="display:none;">
